@@ -1,0 +1,63 @@
+<header>
+  <div class="top-0 fixed h-14 w-full backdrop-blur-2xl bg-sky-950/60">
+    <div class="flex justify-center size-full w-full px-6">
+      <div class="flex items-center justify-between max-w-7xl size-full py-2">
+        <div class="flex items-center gap-6 h-full w-fill">
+          <a
+            routerLink="/"
+            class="flex min-w-fit justify-center items-center h-full w-fit"
+            aria-label="Логотип">
+            <img ngSrc="holodim-logo.png" class="h-full w-fit"
+              width="994"
+              height="480">
+          </a>
+          <nav
+            class="hidden min-[770px]:flex justify-start items-center gap-6 text-base h-full w-fit">
+            @for (rout of routes; track $index) {
+            <a [routerLink]="rout.link"
+              class="text-white hover:text-gray-300 dark:active:text-gray-300">
+              {{rout.label}}
+            </a>
+            }
+          </nav>
+        </div>
+        <div class="flex items-center h-full w-fill">
+          <nav
+            class="flex justify-start items-center gap-6 text-base h-full w-fit">
+            <a routerLink="/" aria-label="Почта"
+              class="flex items-center justify-center gap-2 fill-white hover:fill-stone-300 active:fill-stone-300 text-white hover:text-stone-300 active:text-stone-300">
+              <mail-icon class='h-8 w-8' />
+              <p class="text-sm hidden lg:block">holodim@tut.by</p>
+            </a>
+            <a routerLink="/" aria-label="Телофон"
+              class="flex items-center justify-center gap-2 fill-white hover:fill-stone-300 active:fill-stone-300 text-white hover:text-stone-300 active:text-stone-300">
+              <call-icon class='h-8 w-8' />
+              <p class="text-sm hidden lg:block">+375 44 788 54 87</p>
+            </a>
+            <a routerLink="/"
+              class="flex items-center justify-center fill-white hover:fill-stone-300 active:fill-stone-300 h-fill min-[430px]:h-full px-0 min-[430px]:px-3 font-bold bg-none min-[430px]:bg-white min-[430px]:hover:bg-stone-300 min-[430px]:active:bg-stone-300 text-black rounded-full">
+              <contact-form-icon class='h-8 w-8 min-[430px]:hidden block' />
+              <p class="hidden min-[430px]:block">Заказать звонок</p>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="fixed bottom-0 min-[770px]:hidden w-full h-14 flex backdrop-blur-2xl bg-sky-950/60">
+    <div class="flex items-center justify-between h-full w-full px-6">
+      <nav
+        class="flex items-center justify-between size-full">
+        @for (rout of routes; track $index) {
+        <a [routerLink]="rout.link"
+          [aria-label]="rout.label"
+          class="flex items-center justify-center h-full w-full active:bg-black/20 hover:bg-black/20">
+          <ng-container
+            *ngComponentOutlet="icons[$index]; inputs: {class: 'h-8 w-8 fill-white hover:fill-stone-300 active:fill-stone-300'}" />
+        </a>
+        }
+      </nav>
+    </div>
+  </div>
+</header>
