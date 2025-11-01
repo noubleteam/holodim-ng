@@ -7,9 +7,7 @@
             routerLink="/"
             class="flex min-w-fit justify-center items-center h-full w-fit"
             aria-label="Логотип">
-            <img ngSrc="holodim-logo.png" class="h-full w-fit"
-              width="994"
-              height="480">
+            <holodim-logo class="h-8 w-fit fill-white" />
           </a>
           <nav
             class="hidden min-[770px]:flex justify-start items-center gap-6 text-base h-full w-fit">
@@ -29,11 +27,19 @@
               <mail-icon class='h-8 w-8' />
               <p class="text-sm hidden lg:block">holodim@tut.by</p>
             </a>
-            <a routerLink="/" aria-label="Телофон"
-              class="flex items-center justify-center gap-2 fill-white hover:fill-stone-300 active:fill-stone-300 text-white hover:text-stone-300 active:text-stone-300">
-              <call-icon class='h-8 w-8' />
-              <p class="text-sm hidden lg:block">+375 44 788 54 87</p>
-            </a>
+            <div class="flex flex-col gap-0">
+              <a routerLink="/" aria-label="Телофон"
+                class="flex items-center justify-center gap-2 fill-white hover:fill-stone-300 active:fill-stone-300 text-white hover:text-stone-300 active:text-stone-300">
+                <velcom-logo class='h-4 w-4' />
+                <p class="text-sm hidden lg:block">+375 44 788 54 87</p>
+              </a>
+              <a routerLink="/" aria-label="Телофон"
+                class="flex items-center justify-center gap-2 fill-white hover:fill-stone-300 active:fill-stone-300 text-white hover:text-stone-300 active:text-stone-300">
+                <mts-logo class='h-3 w-3' />
+                <p class="text-sm hidden lg:block">+375 29 862 49 07</p>
+              </a>
+            </div>
+
             <a routerLink="/"
               class="flex items-center justify-center fill-white hover:fill-stone-300 active:fill-stone-300 h-fill min-[430px]:h-full px-0 min-[430px]:px-3 font-bold bg-none min-[430px]:bg-white min-[430px]:hover:bg-stone-300 min-[430px]:active:bg-stone-300 text-black rounded-full">
               <contact-form-icon class='h-8 w-8 min-[430px]:hidden block' />
