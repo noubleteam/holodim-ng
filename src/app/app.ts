@@ -7,6 +7,4 @@ import { Header } from './components/header/header';
   imports: [RouterOutlet, Header],
   templateUrl: './app.html',
 })
-export class App {
-  protected readonly title = signal('holodim-ng');
-}
+export class App {}

@@ -6,11 +6,12 @@ import { routes } from '../app.routes';
 })
 export class RoutsConfig {
   getRoutsAndLabels() {
-    return [
-      { link: routes[0].path ?? '', label: 'Главная' },
-      { link: routes[1].path ?? '', label: 'Услуги' },
-      { link: routes[2].path ?? '', label: 'Каталог' },
-      { link: routes[3].path ?? '', label: 'Контакты' },
-    ];
+    const routesData = routes.map((route) => {
+      return {
+        link: route.path,
+        label: route.data?.['breadcrumb'] ?? '',
+      };
+    });
+    return routesData;
   }
 }
