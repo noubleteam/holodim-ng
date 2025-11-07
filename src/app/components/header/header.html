@@ -26,7 +26,9 @@
           </nav>
         </div>
         <div class="flex items-center h-full w-fill">
-          <nav class="flex items-center justify-start h-full gap-6 text-base w-fit">
+          <nav
+            class="flex items-center justify-start h-full gap-6 text-base w-fit"
+          >
             <a
               routerLink="/"
               aria-label="Почта"
@@ -69,7 +71,9 @@
       </div>
     </div>
   </div>
-  <div class="fixed bottom-0 flex w-full min-[790px]:hidden h-14 backdrop-blur-2xl bg-sky-950/60">
+  <div
+    class="fixed bottom-0 flex w-full min-[790px]:hidden h-14 backdrop-blur-2xl bg-sky-950/60"
+  >
     <div class="flex items-center justify-between w-full h-full px-6">
       <nav class="flex items-center justify-between size-full">
         @for (rout of routes; track $index) {
@@ -81,7 +85,10 @@
             <ng-container
               *ngComponentOutlet="
                 icons[$index];
-                inputs: { class: 'h-8 w-8 fill-white hover:fill-stone-300 active:fill-stone-300' }
+                inputs: {
+                  class:
+                    'h-8 w-8 fill-white hover:fill-stone-300 active:fill-stone-300',
+                }
               "
             />
           </a>

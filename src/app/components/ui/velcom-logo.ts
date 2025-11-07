@@ -4,7 +4,12 @@ import { Component, input } from '@angular/core';
   selector: 'velcom-logo',
   imports: [],
   template: `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 75" fill="none" [class]="class()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 75"
+      fill="none"
+      [class]="class()"
+    >
       <path
         d="M60.0509 35.0883L24.9629 0L-0.000104832 24.9632L35.0879 60.0515L60.0509 35.0883Z"
         fill="#FFFF4B"

@@ -3,7 +3,6 @@ import { NgComponentOutlet } from '@angular/common';
 import { RoutsConfig } from '../../services/routs-config';
 import { RouterLink } from '@angular/router';
 import { MailIcon } from '../ui/mail-icon';
-import { CallIcon } from '../ui/call-icon';
 import { HomeIcon } from '../ui/home-icon';
 import { ContactFormIcon } from '../ui/contact-form-icon';
 import { ServicesIcon } from '../ui/services-icon';

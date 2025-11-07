@@ -13,16 +13,21 @@ interface Breadcrumb {
 export class BreadcrumbService {
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
-      this.breadcrumbs = this.createBreadcrumbs(this.activatedRoute.root);
-    });
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.breadcrumbs = this.createBreadcrumbs(this.activatedRoute.root);
+      });
   }
 
   private createBreadcrumbs(
     route: ActivatedRoute,
     url: string = '',
-    breadcrumbs: Breadcrumb[] = []
+    breadcrumbs: Breadcrumb[] = [],
   ): Breadcrumb[] {
     const children: ActivatedRoute[] = route.children;
 
@@ -31,7 +36,9 @@ export class BreadcrumbService {
     }
 
     for (const child of children) {
-      const routeURL: string = child.snapshot.url.map((segment) => segment.path).join('/');
+      const routeURL: string = child.snapshot.url
+        .map((segment) => segment.path)
+        .join('/');
       if (routeURL !== '') {
         url += `/${routeURL}`;
       }

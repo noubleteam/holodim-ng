@@ -4,7 +4,11 @@ import { Component, input } from '@angular/core';
   selector: 'contact-form-icon',
   imports: [],
   template: `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" [class]="class()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      [class]="class()"
+    >
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"

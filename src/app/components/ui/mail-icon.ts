@@ -4,7 +4,11 @@ import { Component, input } from '@angular/core';
   selector: 'mail-icon',
   imports: [],
   template: `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" [class]="class()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 60 60"
+      [class]="class()"
+    >
       <path
         d="M23 51.9375V57.7557C23 58.9606 23.8954 59.9375 25 59.9375C26.1045 59.9375 27 58.9606 27 57.7557V51.9375H23Z"
       />

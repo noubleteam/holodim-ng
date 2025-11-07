@@ -10,7 +10,7 @@
     "serve:ssr:holodim-ng": "node dist/holodim-ng/server/server.mjs"
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 80,
     "singleQuote": true,
     "overrides": [
       {
