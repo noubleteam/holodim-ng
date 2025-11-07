@@ -16,12 +16,9 @@
             class="items-center justify-start hidden h-full gap-6 text-base min-[790px]:flex w-fit"
           >
             @for (rout of routes; track $index) {
-              <a
-                [routerLink]="rout.link"
-                class="text-white hover:text-gray-300 dark:active:text-gray-300"
-              >
-                {{ rout.label }}
-              </a>
+            <a [routerLink]="rout.link" class="text-white hover:text-gray-300">
+              {{ rout.label }}
+            </a>
             }
           </nav>
         </div>
@@ -77,21 +74,21 @@
     <div class="flex items-center justify-between w-full h-full px-6">
       <nav class="flex items-center justify-between size-full">
         @for (rout of routes; track $index) {
-          <a
-            [routerLink]="rout.link"
-            [aria-label]="rout.label"
-            class="flex items-center justify-center w-full h-full active:bg-black/20 hover:bg-black/20"
-          >
-            <ng-container
-              *ngComponentOutlet="
+        <a
+          [routerLink]="rout.link"
+          [aria-label]="rout.label"
+          class="flex items-center justify-center w-full h-full active:bg-black/20 hover:bg-black/20"
+        >
+          <ng-container
+            *ngComponentOutlet="
                 icons[$index];
                 inputs: {
                   class:
                     'h-8 w-8 fill-white hover:fill-stone-300 active:fill-stone-300',
                 }
               "
-            />
-          </a>
+          />
+        </a>
         }
       </nav>
     </div>
