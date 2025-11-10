@@ -18,8 +18,56 @@
 
 @theme {
   --font-roboto: 'Roboto';
+
+  --color-header-bg: rgba(0, 105, 168, 0.8);
+  --color-hello-section-bg: var(--color-blue-50);
+
+  --color-palette-100: var(--color-sky-100);
+  --color-palette-200: var(--color-sky-200);
+  --color-palette-300: var(--color-sky-300);
+  --color-palette-400: var(--color-sky-400);
+  --color-palette-500: var(--color-sky-500);
+  --color-palette-600: var(--color-sky-600);
+  --color-palette-700: var(--color-sky-700);
+  --color-palette-800: var(--color-sky-800);
+  --color-palette-900: var(--color-sky-900);
+  --color-palette-950: var(--color-sky-950);
+
+  --color-link-hover: var(--color-blue-100);
 }
 
 body {
   @apply text-white;
+}
+
+@layer components {
+  .tooltip {
+    position: absolute;
+  }
+
+  .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+
+  .bottom-tooltip {
+    position: absolute;
+  }
+
+  .bottom-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+  }
 }
