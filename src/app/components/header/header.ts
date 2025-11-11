@@ -12,29 +12,27 @@ import { HolodimLogo } from '../ui/holodim-logo';
 import { VelcomLogo } from '../ui/velcom-logo';
 import { MtsLogo } from '../ui/mts-logo';
 import { PhoneIcon } from '../ui/phone-icon';
-import { DeviceDetectorService } from 'ngx-device-detector';
+import { ResponsiveText } from './responsive-text/responsive-text';
 
 @Component({
   selector: 'app-header',
   imports: [
     RouterLink,
-    MailIcon,
     NgComponentOutlet,
     ContactFormIcon,
     HolodimLogo,
     PhoneIcon,
+    ResponsiveText,
   ],
   templateUrl: './header.html',
 })
 export class Header {
   routsConfig = inject(RoutsConfig);
   document = inject(DOCUMENT);
-  deviceDetector = inject(DeviceDetectorService);
 
   routes = this.routsConfig.getRoutsAndLabels();
-  isMobile = this.deviceDetector.isMobile();
-
   icons = [HomeIcon, ServicesIcon, CatalogIcon, ContactsIcon];
+
   phones = [
     {
       label: '+375 44 788 54 87',
@@ -47,10 +45,14 @@ export class Header {
       icon: MtsLogo,
     },
   ];
-  copiedTimer: NodeJS.Timeout | null = null;
+
+  mail = {
+    label: 'holodim@tut.by',
+    mail: 'mailto:holodim@tut.by',
+    icon: MailIcon,
+  };
 
   isContactsModalOpen = signal<boolean>(false);
-  copiedIndex = signal<number | null>(null);
 
   openContactsModal() {
     this.isContactsModalOpen.set(true);
@@ -60,17 +62,5 @@ export class Header {
   closeContactsModal() {
     this.isContactsModalOpen.set(false);
     this.document.body.style.overflow = '';
-  }
-
-  async copyPhone(phone: string, index: number) {
-    try {
-      await navigator.clipboard.writeText(phone);
-      this.copiedIndex.set(index);
-
-      if (this.copiedTimer !== null) clearTimeout(this.copiedTimer);
-      this.copiedTimer = setTimeout(() => this.copiedIndex.set(null), 1000);
-    } catch (err) {
-      console.error('Ошибка при копировании:', err);
-    }
   }
 }

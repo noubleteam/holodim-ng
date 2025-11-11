@@ -27,14 +27,14 @@
           <nav
             class="flex items-center justify-start h-full gap-6 text-base w-fit"
           >
-            <a
-              routerLink="/"
-              aria-label="Почта"
-              class="flex items-center justify-center gap-2 text-white fill-white hover:fill-link-hover active:fill-link-hover hover:text-link-hover active:text-link-hover"
-            >
-              <mail-icon class="w-8 h-8" />
-              <p class="hidden text-sm lg:block">holodim&#64;tut.by</p>
-            </a>
+            <responsive-text
+              [label]="mail.label"
+              labelStyle="hidden text-sm lg:block"
+              [href]="mail.mail"
+              [icon]="mail.icon"
+              iconStyle="w-8 h-8"
+              [tooltipPosition]="'bottom'"
+            />
             <button
               class="block cursor-pointer fill-white hover:fill-link-hover lg:hidden"
               (click)="openContactsModal()"
@@ -43,41 +43,16 @@
               <phone-icon class="w-8 h-8" />
             </button>
             <div class="flex-col hidden lg:flex">
-              @if (isMobile) { @for (phone of phones; track $index) {
-              <a
+              @for (phone of phones; track $index) {
+              <responsive-text
                 [href]="phone.tel"
-                [aria-label]="phone.label"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center justify-center gap-2 text-white fill-white hover:fill-link-hover active:fill-link-hover hover:text-link-hover active:text-link-hover"
-              >
-                <ng-container
-                  *ngComponentOutlet="phone.icon; inputs: { class: 'h-4 w-4' }"
-                />
-                <p class="text-sm font-medium">{{ phone.label }}</p>
-              </a>
-              } } @else { @for (phone of phones; track $index) {
-              <button
-                (click)="copyPhone(phone.label, $index)"
-                class="relative flex items-center justify-center gap-2 text-white transition fill-white hover:fill-link-hover active:fill-link-hover hover:text-link-hover active:text-link-hover"
-                aria-label="Скопировать номер"
-              >
-                <ng-container
-                  *ngComponentOutlet="phone.icon; inputs: { class: 'h-4 w-4' }"
-                />
-                <p class="text-sm font-medium">
-                  {{ phone.label }}
-                </p>
-
-                @if (copiedIndex() === $index) {
-                <span
-                  class="z-20 px-2 py-1 text-xs -translate-x-1/2 bg-white bottom-tooltip top-full left-1/2 rounded-xl text-palette-950"
-                >
-                  Скопировано!
-                </span>
-                }
-              </button>
-              } }
+                [icon]="phone.icon"
+                iconStyle="h-4 w-4"
+                [label]="phone.label"
+                labelStyle="text-sm font-medium"
+                [tooltipPosition]="'bottom'"
+              />
+              }
             </div>
             <a
               routerLink="/"
@@ -127,41 +102,15 @@
     (click)="$event.stopPropagation()"
   >
     <div class="flex flex-col items-center gap-4">
-      @if (isMobile) { @for (phone of phones; track $index) {
-      <a
+      @for (phone of phones; track $index) {
+      <responsive-text
         [href]="phone.tel"
-        [aria-label]="phone.label"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex items-center justify-center gap-2 text-white fill-white hover:fill-link-hover active:fill-link-hover hover:text-link-hover active:text-link-hover"
-      >
-        <ng-container
-          *ngComponentOutlet="phone.icon; inputs: { class: 'h-8 w-8' }"
-        />
-        <p class="text-sm font-medium">{{ phone.label }}</p>
-      </a>
-      } } @else { @for (phone of phones; track $index) {
-      <button
-        (click)="copyPhone(phone.label, $index)"
-        class="relative flex items-center justify-center gap-2 text-white transition fill-white hover:fill-link-hover active:fill-link-hover hover:text-link-hover active:text-link-hover"
-        aria-label="Скопировать номер"
-      >
-        <ng-container
-          *ngComponentOutlet="phone.icon; inputs: { class: 'h-8 w-8' }"
-        />
-        <p class="text-sm font-medium">
-          {{ phone.label }}
-        </p>
-
-        @if (copiedIndex() === $index) {
-        <span
-          class="px-2 py-1 text-xs -translate-x-1/2 bg-white tooltip bottom-full left-1/2 rounded-xl text-palette-950"
-        >
-          Скопировано!
-        </span>
-        }
-      </button>
-      } }
+        [icon]="phone.icon"
+        iconStyle="h-8 w-8"
+        [label]="phone.label"
+        labelStyle="text-sm font-medium"
+      />
+      }
 
       <button
         class="w-full py-2 text-sm bg-white cursor-pointer text-palette-950 rounded-xl"

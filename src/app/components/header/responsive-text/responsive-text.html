@@ -1,0 +1,35 @@
+@if (isMobile) {
+<a
+  [href]="href()"
+  [aria-label]="label()"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="flex items-center justify-center gap-2 text-white fill-white hover:fill-link-hover active:fill-link-hover hover:text-link-hover active:text-link-hover"
+>
+  <ng-container *ngComponentOutlet="icon(); inputs: { class: iconStyle() }" />
+  <p [class]="labelStyle()">{{ label() }}</p>
+</a>
+} @else {
+<button
+  (click)="copyText(label())"
+  class="relative flex items-center justify-center gap-2 text-white transition fill-white hover:fill-link-hover active:fill-link-hover hover:text-link-hover active:text-link-hover"
+  aria-label="Скопировать номер"
+>
+  <ng-container *ngComponentOutlet="icon(); inputs: { class: iconStyle() }" />
+  <p [class]="labelStyle()">
+    {{ label() }}
+  </p>
+
+  @if (copiedText() !== null) {
+  <span
+    [ngClass]="{
+      tooltip: tooltipPosition() === 'top',
+      'bottom-tooltip ': tooltipPosition() !== 'top',
+      'z-20 px-2 py-1 text-xs -translate-x-1/2 bg-white left-1/2 rounded-xl text-palette-950': true
+    }"
+  >
+    {{ copiedText() }}
+  </span>
+  }
+</button>
+}

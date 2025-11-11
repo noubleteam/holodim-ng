@@ -43,6 +43,7 @@ body {
 @layer components {
   .tooltip {
     position: absolute;
+    bottom: 100%;
   }
 
   .tooltip::after {
@@ -58,6 +59,7 @@ body {
 
   .bottom-tooltip {
     position: absolute;
+    top: 100%;
   }
 
   .bottom-tooltip::after {
