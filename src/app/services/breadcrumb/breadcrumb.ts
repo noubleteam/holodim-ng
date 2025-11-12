@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -12,11 +12,10 @@ interface Breadcrumb {
 })
 export class BreadcrumbService {
   breadcrumbs: Breadcrumb[] = [];
+  private router: Router = inject(Router);
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-  ) {
+  constructor() {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -27,7 +26,7 @@ export class BreadcrumbService {
   private createBreadcrumbs(
     route: ActivatedRoute,
     url: string = '',
-    breadcrumbs: Breadcrumb[] = [],
+    breadcrumbs: Breadcrumb[] = []
   ): Breadcrumb[] {
     const children: ActivatedRoute[] = route.children;
 
