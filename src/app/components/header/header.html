@@ -6,18 +6,15 @@
           <a
             routerLink="/"
             class="flex items-center justify-center h-full min-w-fit w-fit"
-            aria-label="Логотип"
-          >
+            aria-label="Логотип">
             <holodim-logo class="h-8 w-fit fill-white" />
           </a>
           <nav
-            class="items-center justify-start hidden h-full gap-6 text-base min-[790px]:flex w-fit"
-          >
+            class="items-center justify-start hidden h-full gap-6 text-base min-[790px]:flex w-fit">
             @for (rout of routes; track $index) {
             <a
               [routerLink]="rout.link"
-              class="text-white hover:text-link-hover"
-            >
+              class="text-white hover:text-link-hover">
               {{ rout.label }}
             </a>
             }
@@ -25,21 +22,18 @@
         </div>
         <div class="flex items-center h-full w-fill">
           <nav
-            class="flex items-center justify-start h-full gap-6 text-base w-fit"
-          >
+            class="flex items-center justify-start h-full gap-6 text-base w-fit">
             <responsive-text
               [label]="mail.label"
               labelStyle="hidden text-sm lg:block"
               [href]="mail.mail"
               [icon]="mail.icon"
               iconStyle="w-8 h-8"
-              [tooltipPosition]="'bottom'"
-            />
+              [tooltipPosition]="'bottom'" />
             <button
               class="block cursor-pointer fill-white hover:fill-link-hover lg:hidden"
               (click)="openContactsModal()"
-              aria-label="Контакты"
-            >
+              aria-label="Контакты">
               <phone-icon class="w-8 h-8" />
             </button>
             <div class="flex-col hidden lg:flex">
@@ -50,14 +44,12 @@
                 iconStyle="h-4 w-4"
                 [label]="phone.label"
                 labelStyle="text-sm font-medium"
-                [tooltipPosition]="'bottom'"
-              />
+                [tooltipPosition]="'bottom'" />
               }
             </div>
             <a
               routerLink="/"
-              class="flex items-center justify-center font-bold rounded-full min-[460px]:py-2 text-palette-950 fill-white hover:fill-link-hover active:fill-link-hover min-[460px]:px-3 bg-none min-[460px]:bg-white min-[460px]:hover:bg-link-hover min-[460px]:active:bg-link-hover"
-            >
+              class="flex items-center justify-center font-bold rounded-full min-[460px]:py-2 text-palette-950 fill-white hover:fill-link-hover active:fill-link-hover min-[460px]:px-3 bg-none min-[460px]:bg-white min-[460px]:hover:bg-link-hover min-[460px]:active:bg-link-hover">
               <contact-form-icon class="block w-8 h-8 min-[460px]:hidden" />
               <p class="hidden min-[460px]:block">Заказать звонок</p>
             </a>
@@ -67,16 +59,14 @@
     </div>
   </div>
   <div
-    class="fixed bottom-0 z-10 flex w-full min-[790px]:hidden h-14 backdrop-blur-2xl bg-header-bg"
-  >
+    class="fixed bottom-0 z-10 flex w-full min-[790px]:hidden h-14 backdrop-blur-2xl bg-header-bg">
     <div class="flex items-center justify-between w-full h-full px-6">
       <nav class="flex items-center justify-between size-full">
         @for (rout of routes; track $index) {
         <a
           [routerLink]="rout.link"
           [aria-label]="rout.label"
-          class="flex items-center justify-center w-full h-full fill-white active:bg-palette-950/10 hover:bg-palette-950/10 hover:fill-link-hover active:fill-link-hover"
-        >
+          class="flex items-center justify-center w-full h-full fill-white active:bg-palette-950/10 hover:bg-palette-950/10 hover:fill-link-hover active:fill-link-hover">
           <ng-container
             *ngComponentOutlet="
                 icons[$index];
@@ -84,8 +74,7 @@
                   class:
                     'h-8 w-8',
                 }
-              "
-          />
+              " />
         </a>
         }
       </nav>
@@ -95,12 +84,10 @@
 @if (isContactsModalOpen()) {
 <div
   class="fixed inset-0 flex items-center justify-center z-100 bg-palette-950/50"
-  (click)="closeContactsModal()"
->
+  (click)="closeContactsModal()">
   <div
     class="relative flex flex-col items-center justify-center p-3 text-white shadow-xl bg-palette-600 rounded-2xl"
-    (click)="$event.stopPropagation()"
-  >
+    (click)="$event.stopPropagation()">
     <div class="flex flex-col items-center gap-4">
       @for (phone of phones; track $index) {
       <responsive-text
@@ -108,15 +95,13 @@
         [icon]="phone.icon"
         iconStyle="h-8 w-8"
         [label]="phone.label"
-        labelStyle="text-sm font-medium"
-      />
+        labelStyle="text-sm font-medium" />
       }
 
       <button
         class="w-full py-2 text-sm bg-white cursor-pointer text-palette-950 rounded-xl"
         aria-label="Закрыть"
-        (click)="closeContactsModal()"
-      >
+        (click)="closeContactsModal()">
         Закрыть
       </button>
     </div>
